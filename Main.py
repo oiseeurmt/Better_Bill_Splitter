@@ -48,6 +48,9 @@ set_column_as_headers(0, column_header_texts)
 #blank spaces in row 1 col 1-2
 for col in range(0, 2):
     entries[0][col].config(state='readonly')
+#blank spaces in row 2-7 col 2
+for row in range(1, 7):
+    entries[row][1].config(state='readonly')
 #the total section
 for row in range(7, 13):
     for col in range(0, 6):
@@ -73,11 +76,66 @@ def calculate_subtotal(*args):
         entries[8][col].insert(0, f"${subtotal:.2f}")
         # Set the cell back to read-only
         entries[8][col].config(state='readonly')
+
+def calculate_tip(*args):
+    calculate_subtotal() # this needs to be run first because the function was calculating tip before or at the same time the subtotal was
+    try:
+        # Retrieve the tip percentage from row 10, column 2
+        tip_percentage = float(vars[9][1].get().strip('%')) / 100 if vars[9][1].get() else 0
+    except ValueError:
+        tip_percentage = 0
+
+    for col in range(2, 6):  # Columns 3 to 6
+        try:
+            # Get the subtotal from row 8
+            subtotal = float(vars[8][col].get().strip('$')) if vars[8][col].get() else 0
+            # Calculate the tip based on the subtotal and tip percentage
+            tip_amount = subtotal * tip_percentage
+        except ValueError:
+            tip_amount = 0
+
+        # Temporarily make the cell in row 10 editable, then update and revert to read-only
+        entries[9][col].config(state='normal')
+        entries[9][col].delete(0, tk.END)
+        entries[9][col].insert(0, f"${tip_amount:.2f}")
+        entries[9][col].config(state='readonly')
+
+#calc tax
+def calculate_tax(*args):
+    calculate_subtotal() # this needs to be run first because the function was calculating tip before or at the same time the subtotal was
+    try:
+        # Retrieve the tax percentage from row 11, column 2
+        tax_percentage = float(vars[10][1].get().strip('%')) / 100 if vars[10][1].get() else 0
+    except ValueError:
+        tax_percentage = 0
+
+    for col in range(2, 6):  # Columns 3 to 6
+        try:
+            # Get the subtotal from row 8
+            subtotal = float(vars[8][col].get().strip('$')) if vars[8][col].get() else 0
+            # Calculate the tax based on the subtotal and tax percentage
+            tax_amount = subtotal * tax_percentage
+        except ValueError:
+            tax_amount = 0
+
+        # Temporarily make the cell in row 10 editable, then update and revert to read-only
+        entries[10][col].config(state='normal')
+        entries[10][col].delete(0, tk.END)
+        entries[10][col].insert(0, f"${tax_amount:.2f}")
+        entries[10][col].config(state='readonly')
+
+
 # Set up trace for cells in rows 2 to 7 and columns 3 to 6
 for row in range(1, 7):  # Rows 2 to 7 (indices 1 to 6)
     for col in range(2, 6):  # Columns 3 to 6 (indices 2 to 5)
         # Add a trace on each cell's StringVar to auto-calculate subtotal on change
         vars[row][col].trace_add("write", calculate_subtotal)
+        vars[row][col].trace_add("write", calculate_tip)
+        vars[row][col].trace_add("write", calculate_tax)
+
+# Set up trace for tip, tax, and tip w/tax percentages
+vars[9][1].trace_add("write", calculate_tip)
+vars[10][1].trace_add("write", calculate_tax)
 
 # Run the application
 root.mainloop()
