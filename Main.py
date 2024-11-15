@@ -162,6 +162,40 @@ def calculate_tip_with_tax(*args):
             entries[11][col].insert(0, f"${tip_with_tax_amount:.2f}")
             entries[11][col].config(state='readonly')
 
+#calc TOTAL
+def calculate_total(*args):
+    calculate_subtotal() # this needs to be run first because the function was calculating tip before or at the same time the subtotal was
+    calculate_tip()
+    calculate_tax()
+    calculate_tip_with_tax()
+
+    for col in range(2, 6):
+        total = 0
+        for row in range(8, 12):
+            try:
+                cell_value = float(vars[row][col].get().strip('$')) if vars[row][col].get() else 0
+                total += cell_value
+            except ValueError:
+                pass
+
+            # Temporarily make the cell in row 12 editable, then update and revert to read-only
+            entries[12][col].config(state='normal')
+            entries[12][col].delete(0, tk.END)
+            entries[12][col].insert(0, f"${total:.2f}")
+            entries[12][col].config(state='readonly')
+
+def calculate_tip_total(*args):
+    calculate_tip()
+    calculate_total()
+
+def calculate_tax_total(*args):
+    calculate_tax()
+    calculate_total()
+
+def calculate_tipwtax_total(*args):
+    calculate_tip_with_tax()
+    calculate_total()
+
 # Set up trace for cells in rows 2 to 7 and columns 3 to 6
 for row in range(1, 7):  # Rows 2 to 7 (indices 1 to 6)
     for col in range(2, 6):  # Columns 3 to 6 (indices 2 to 5)
@@ -170,11 +204,13 @@ for row in range(1, 7):  # Rows 2 to 7 (indices 1 to 6)
         vars[row][col].trace_add("write", calculate_tip)
         vars[row][col].trace_add("write", calculate_tax)
         vars[row][col].trace_add("write", calculate_tip_with_tax)
+        vars[row][col].trace_add("write", calculate_total)
 
 # Set up trace for tip, tax, and tip w/tax percentages
-vars[9][1].trace_add("write", calculate_tip)
-vars[10][1].trace_add("write", calculate_tax)
-vars[11][1].trace_add("write", calculate_tip_with_tax)
+vars[9][1].trace_add("write", calculate_tip_total)
+vars[10][1].trace_add("write", calculate_tax_total)
+vars[11][1].trace_add("write", calculate_tipwtax_total)
+
 
 # Run the application
 root.mainloop()
