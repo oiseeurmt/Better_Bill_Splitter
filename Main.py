@@ -85,6 +85,12 @@ def calculate_tip(*args):
     except ValueError:
         tip_percentage = 0
 
+    # Only calculate if the "Tip" percentage is more than 0%
+    if tip_percentage > 0:
+        # Set "Tip w/tax %" (row 12, column 2) to 0%
+        entries[11][1].delete(0, tk.END)
+        entries[11][1].insert(0, "0%")
+
     for col in range(2, 6):  # Columns 3 to 6
         try:
             # Get the subtotal from row 8
@@ -124,6 +130,37 @@ def calculate_tax(*args):
         entries[10][col].insert(0, f"${tax_amount:.2f}")
         entries[10][col].config(state='readonly')
 
+#calc tip w/tax
+def calculate_tip_with_tax(*args):
+    calculate_subtotal() # this needs to be run first because the function was calculating tip before or at the same time the subtotal was
+    calculate_tax()
+    try:
+        # Retrieve the tax percentage from row 11, column 2
+        tip_with_tax_percentage = float(vars[11][1].get().strip('%')) / 100 if vars[11][1].get() else 0
+    except ValueError:
+        tip_with_tax_percentage = 0
+
+    # Only calculate if the "Tip w/Tax" percentage is more than 0%
+    if tip_with_tax_percentage > 0:
+        # Set "Tip %" (row 10, column 2) to 0%
+        entries[9][1].delete(0, tk.END)
+        entries[9][1].insert(0, "0%")
+
+        for col in range(2, 6):  # Columns 3 to 6
+            try:
+                # Get the subtotal and tax amounts from rows 8 and 11
+                subtotal = float(vars[8][col].get().strip('$')) if vars[8][col].get() else 0
+                tax = float(vars[10][col].get().strip('$')) if vars[10][col].get() else 0
+                # Calculate the tip with tax based on subtotal + tax
+                tip_with_tax_amount = (subtotal + tax) * (tip_with_tax_percentage)
+            except ValueError:
+                tip_with_tax_amount = 0  # Default to 0 if any value is invalid
+
+            # Temporarily make the cell in row 12 editable, then update and revert to read-only
+            entries[11][col].config(state='normal')
+            entries[11][col].delete(0, tk.END)
+            entries[11][col].insert(0, f"${tip_with_tax_amount:.2f}")
+            entries[11][col].config(state='readonly')
 
 # Set up trace for cells in rows 2 to 7 and columns 3 to 6
 for row in range(1, 7):  # Rows 2 to 7 (indices 1 to 6)
@@ -132,10 +169,12 @@ for row in range(1, 7):  # Rows 2 to 7 (indices 1 to 6)
         vars[row][col].trace_add("write", calculate_subtotal)
         vars[row][col].trace_add("write", calculate_tip)
         vars[row][col].trace_add("write", calculate_tax)
+        vars[row][col].trace_add("write", calculate_tip_with_tax)
 
 # Set up trace for tip, tax, and tip w/tax percentages
 vars[9][1].trace_add("write", calculate_tip)
 vars[10][1].trace_add("write", calculate_tax)
+vars[11][1].trace_add("write", calculate_tip_with_tax)
 
 # Run the application
 root.mainloop()
