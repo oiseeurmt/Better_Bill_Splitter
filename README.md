@@ -1,4 +1,4 @@
-A Better Bill Splitter (Better BS) to fairly split the bill based on prorated amounts so that no one has to be unhappy when they order a $5 beer during happy hour and have to split the $10 tax and tip evenly!!! >=[
+A Better Bill Splitter (Better BS) to fairly split the bill based on prorated amounts so that no one has to be unhappy when they order a $5 beer during happy hour and have to cought up $10 extra to split the tax and tip evenly!!! >=[
 
 Desktop app for now that i'm looking to make web based
 
