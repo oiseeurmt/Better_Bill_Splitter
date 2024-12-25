@@ -1,0 +1,29 @@
+Version 0.2 MVP
+    Code
+        [x] create an update totals function
+        [x] make update totals button functional
+        [x] function to update person fields
+        [x] link tip input value to function
+        [x] function to update input fields
+        [x] function to display totals
+    UI
+        [x] create update total button
+        [x] update total values on each column
+
+Version 0.1 MVP
+    Code
+        [x] create a list of food items and their prices
+        [x] create a list of people and their dollar share
+        [x] create a function to calculate subtotal
+        [x] create a function to calculate tip
+        [x] create a function to calculate tax
+        [x] create a function to calculate total
+
+    UI
+        [x] create input fields for the food items
+        [x] create input fields for persons
+        [x] create input fields for each persons share
+        [x] create space for subtotal
+        [x] create input field for tip percentage
+        [x] create input field for tax percentage
+        [x] create space total
