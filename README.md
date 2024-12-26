@@ -7,3 +7,9 @@ Python, Tkinter
 I want everyone to use BBS as an easy, simple way to split bills! I originally used an excel sheet with formulas and I'm slowly integrating those complexities into the app as I learn how to.
 
 check screenshot in the repo to see it in action!
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version 1
+
+Switching to JS
