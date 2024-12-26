@@ -1,4 +1,4 @@
-Version 0.2 MVP
+Version 1 MVP
     Code
         [x] create an update totals function
         [x] make update totals button functional
