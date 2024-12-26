@@ -13,3 +13,5 @@ check screenshot in the repo to see it in action!
 Version 1
 
 Switching to JS
+- created a new UI
+- loaded html/css files
