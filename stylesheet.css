@@ -1,0 +1,88 @@
+/* General */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 10rem;
+}
+table {
+  border: black 0.2rem solid;
+  border-radius: 2rem;
+  background-color: #7c7c7c57;
+}
+
+#title {
+  background-color: none;
+  font-size: 4rem;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  width: 10rem;
+  height: 2rem;
+  font-family: "Poppins", serif;
+  justify-content: center;
+  /* border: black 0.2rem solid; */
+  cursor: default;
+  text-align: center;
+}
+
+input {
+  border-radius: 2rem;
+  padding: 1.5rem;
+  width: 10rem;
+  height: 2rem;
+  font-family: "Poppins", serif;
+}
+
+.heading-input {
+  border: black 0.2rem solid;
+  background-color: #8fddfe;
+  font-size: 1.75rem;
+}
+
+.regular-input {
+  background-color: #8fddfe;
+  font-size: 1.75rem;
+  border: none;
+}
+
+.read-input {
+  background-color: #bcbfc0;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  width: 10rem;
+  height: 2rem;
+  font-family: "Poppins", serif;
+  justify-content: center;
+  border: none;
+  cursor: default;
+}
+
+button {
+  background-color: #bcbfc0;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  /* padding: 1.5rem; */
+  width: 10rem;
+  height: 5.5rem;
+  font-family: "Poppins", serif;
+  justify-content: center;
+  border-color: black 1rem solid;
+}
+
+.check-input {
+  background-color: #bcbfc0;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  width: 10rem;
+  height: 2rem;
+  font-family: "Poppins", serif;
+  justify-content: center;
+  border: none;
+}

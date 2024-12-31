@@ -1,3 +1,21 @@
+Version 3
+        [] if statement for tax and tip depending on which field has inputs
+        [] subtotal override field for quick tip and tax calc without any other input
+
+Version 2
+    Code
+        [x] Make personxitemxshare calc based on qty not price
+        [x] Ignore rows with no data for that person or item
+        [x] calculate validation column fields
+        [x] add elements to arrays or objects
+        [x] change functions to use loops
+        [x] remove displayTotals function and update in total functions
+
+    UI
+        [x] Add validation column
+        [x] add field for # of people
+        [x] add field for # of items
+
 Version 1 MVP
     Code
         [x] create an update totals function

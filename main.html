@@ -1,202 +1,391 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Better BS (Bill Splitter)</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Better BS (Bill Splitter)</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
 
-    <body>
-        <table>
+  <body>
+    <!-- prettier-ignore -->
+    <table>
+            <tr>
+                <td colspan ="7" id="title">Better BS</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input class="read-input" placeholder= "# Items: " readonly></td>
+                <td><input class="read-input" id="num-items" value= "4" readonly></td>
+                <td><input class="read-input"  placeholder= "# People: " readonly></td>
+                <td><input class="read-input" id="num-persons" value = "2" readonly></td>
+                <!-- <td><button id="add-person-button">+</button></td> -->
+                <td></td>
+                <td></td>
+            </tr>
             <!-- input fields for persons -->
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input id="person1-input" placeholder="person1"></td>
-                <td><input id="person2-input" placeholder="person2"></td>
+                <td></td>
+                <td><input class="heading-input" id="person1-input" placeholder="person1"></td>
+                <td><input class="heading-input" id="person2-input" placeholder="person2"></td>
+                <td><input class="check-input" id="total-input" placeholder="remaining" readonly></td>
             </tr>
             <!-- input fields for items -->
             <tr>
-                <td><input id="item1-input" placeholder="item1"></td>
-                <td><input id="item1qty-input" placeholder="item1qty"></td>
-                <td><input id="item1cost-input" placeholder="item1cost"></td>
-                <td><input id="person1item1-input" placeholder="person1item1" type="number"></td>
-                <td><input id="person2item1-input" placeholder="person2item1" type="number"></td>
+                <td></td>
+                <td><input class="heading-input" id="item1-input" placeholder="item1"></td>
+                <td><input class="regular-input" id="item1qty-input" placeholder="qty"></td>
+                <td><input class="regular-input" id="item1cost-input" placeholder="cost"></td>
+                <td><input class="regular-input" id="person1item1-input" placeholder="itemshare"></td>
+                <td><input class="regular-input" id="person2item1-input" placeholder="itemshare"></td>
+                <td><input class="check-input" id="checkitem1-input" readonly></td>
             </tr>
 
             <tr>
-                <td><input id="item2-input" placeholder="item2"></td>
-                <td><input id="item2qty-input" placeholder="item2qty"></td>
-                <td><input id="item2cost-input" placeholder="item2cost"></td>
-                <td><input id="person1item2-input" placeholder="person1item2" type="number"></td>
-                <td><input id="person2item2-input" placeholder="person2item2" type="number"></td>
+                <td></td>
+                <td><input class="heading-input" id="item2-input" placeholder="item2"></td>
+                <td><input class="regular-input" id="item2qty-input" placeholder="qty"></td>
+                <td><input class="regular-input" id="item2cost-input" placeholder="cost"></td>
+                <td><input class="regular-input" id="person1item2-input" placeholder="itemshare"></td>
+                <td><input class="regular-input" id="person2item2-input" placeholder="itemshare"></td>
+                <td><input class="check-input" id="checkitem2-input" readonly></td>
             </tr>
 
             <tr>
-                <td><input id="item3-input" placeholder="item3"></td>
-                <td><input id="item3qty-input" placeholder="item3qty"></td>
-                <td><input id="item3cost-input" placeholder="item3cost"></td>
-                <td><input id="person1item3-input" placeholder="person1item3" type="number"></td>
-                <td><input id="person2item3-input" placeholder="person2item3" type="number"></td>
+                <td></td>
+                <td><input class="heading-input" id="item3-input" placeholder="item3"></td>
+                <td><input class="regular-input" id="item3qty-input" placeholder="qty"></td>
+                <td><input class="regular-input" id="item3cost-input" placeholder="cost"></td>
+                <td><input class="regular-input" id="person1item3-input" placeholder="itemshare"></td>
+                <td><input class="regular-input" id="person2item3-input" placeholder="itemshare"></td>
+                <td><input class="check-input" id="checkitem3-input" readonly></td>
             </tr>
 
             <tr>
-                <td><input id="item4-input" placeholder="item4"></td>
-                <td><input id="item4qty-input" placeholder="item4qty"></td>
-                <td><input id="item4cost-input" placeholder="item4cost"></td>
-                <td><input id="person1item4-input" placeholder="person1item4" type="number"></td>
-                <td><input id="person2item4-input" placeholder="person2item4" type="number"></td>
+                <!-- <td><button id="add-item-button">+</button></td> -->
+                <td></td>
+                <td><input class="heading-input" id="item4-input" placeholder="item4"></td>
+                <td><input class="regular-input" id="item4qty-input" placeholder="qty"></td>
+                <td><input class="regular-input" id="item4cost-input" placeholder="cost"></td>
+                <td><input class="regular-input" id="person1item4-input" placeholder="itemshare"></td>
+                <td><input class="regular-input" id="person2item4-input" placeholder="itemshare"></td>
+                <td><input class="check-input" id="checkitem4-input" readonly></td>
             </tr>
 
             <tr>
                 <td></td>
                 <td></td>
-                <td>Subtotal</td>
-                <td id="person1-subtotal">$</td>
-                <td id="person2-subtotal">$</td>
-            </tr>
-
-            <tr>
                 <td></td>
-                <td><input id="tip-percentage-input" placeholder="tip %"></td>
-                <td>% Tip</td>
-                <td id="person1-tip">$</td>
-                <td id="person2-tip">$</td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input id="tax-percentage-input" placeholder="tax %"></td>
-                <td>% Tax</td>
-                <td id="person1-tax">$</td>
-                <td id="person2-tax">$</td>
+                <td><input class="read-input" placeholder="Subtotal" readonly></td>
+                <td><input class="read-input" id="person1-subtotal" placeholder= "$" readonly></td>
+                <td><input class="read-input" id="person2-subtotal" placeholder= "$" readonly></td>
+                <td><input class="check-input" id="checktotal1-input"  readonly></td>
             </tr>
 
             <tr>
                 <td></td>
                 <td></td>
-                <td>Total </td>
-                <td id="person1-total">$</td>
-                <td id="person2-total">$</td>
+                <!-- <td><input class="regular-input" id="tip-amount-input" placeholder="tip $"></td> -->
+                <td><input class="regular-input" id="tip-percentage-input" placeholder="tip %"></td>
+                <td><input class="read-input" placeholder="% Tip" readonly></td>
+                <td><input class="read-input" id="person1-tip" placeholder= "$" readonly></td>
+                <td><input class="read-input" id="person2-tip" placeholder= "$" readonly></td>
+                <td><input class="check-input" id="checktotal2-input" readonly></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <!-- <td><input class="regular-input" id="tax-amount-input" placeholder="tax $"></td> -->
+                <td><input class="regular-input" id="tax-percentage-input" placeholder="tax %"></td>
+                <td><input class="read-input" placeholder="% Tax" readonly></td>
+                <td><input class="read-input" id="person1-tax" placeholder="$" readonly></td>
+                <td><input class="read-input" id="person2-tax" placeholder="$" readonly></td>
+                <td><input class="check-input" id="checktotal3-input" readonly></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input class="read-input" placeholder="Total " readonly></td>
+                <td><input class="read-input" id="person1-total" placeholder="$" readonly></td>
+                <td><input class="read-input" id="person2-total" placeholder="$" readonly></td>
+                <td><input class="check-input" id="checktotal4-input" readonly></td>
             </tr>
 
             <tr></tr>
             <tr></tr>
             <tr>
                 <td></td>
-                <td><button id="update-total-button">Update Total</button></td>
+                <td><button id="update-total-button">Update</button></td>
             </tr>
-
         </table>
-        <script>
-            var items = [
-                {itemText: "Hamburger", itemPrice: 12.00, itemQty: 2},
-                {itemText: "Soda", itemPrice: 3.00, itemQty: 2},
-                {itemText: "Fries", itemPrice: 6.00, itemQty: 1},
-                {itemText: "Chicken Nuggets", itemPrice: 8.00, itemQty: 1}
-            ];
 
-            var person = [
-                {personText: "", personItems: [], personSubtotal: 0,  personTip: 0, personTax: 0, personTotal: 0},
-                {personText: "", personItems: [], personSubtotal: 0,  personTip: 0, personTax: 0, personTotal: 0}
-            ];
+    <script>
+      var checkItem = [{ item: [] }, { total: [] }];
 
-            function updatePersonFields() {
-                person[0].personText = person1Input.value;
-                person[1].personText = person2Input.value;
+      var person = [
+        {
+          name: "",
+          items: [],
+          subtotal: 0,
+          tip: 0,
+          tax: 0,
+          total: 0,
+        },
+        {
+          name: "",
+          items: [],
+          subtotal: 0,
+          tip: 0,
+          tax: 0,
+          total: 0,
+        },
+      ];
+
+      var personLength = document.getElementById("num-persons").value;
+      var itemLength = document.getElementById("num-items").value;
+
+      function addPerson() {
+        for (i = 0; i < personLength; i++) {
+          if (personInput[i] !== undefined) {
+            personLength++;
+          }
+        }
+      }
+
+      function addItem() {
+        for (i = 0; i < itemInput.length; i++) {
+          if (itemInput[i] !== undefined) {
+            itemLength++;
+          }
+        }
+      }
+
+      function updatePersonField() {
+        for (i = 0; i < personLength; i++) {
+          person[i].name = persons[i].name.value;
+        }
+      }
+
+      function updateItemField() {
+        for (i = 0; i < personLength; i++) {
+          for (j = 0; j < itemLength; j++) {
+            if (items[j].name.value !== "") {
+              person[i].items[j] = parseFloat(
+                (items[j].cost.value / items[j].qty.value) *
+                  persons[i].itemshare[j].value
+              );
+            } else {
+              person[i].items.push(0);
             }
+          }
+        }
+      }
 
-            function updateItemFields() {
-                person[0].personItems = [parseFloat(person1Item1Input.value), parseFloat(person1Item2Input.value), parseFloat(person1Item3Input.value), parseFloat(person1Item4Input.value)];
-                person[1].personItems = [parseFloat(person2Item1Input.value), parseFloat(person2Item2Input.value), parseFloat(person2Item3Input.value), parseFloat(person2Item4Input.value)];
+      function calcSubtotal() {
+        for (i = 0; i < personLength; i++) {
+          var subtotal = 0;
+          for (j = 0; j < itemLength; j++) {
+            subtotal += person[i].items[j];
+          }
+          person[i].subtotal = Math.round(subtotal * 100) / 100;
+          totals[i][0].value = person[i].subtotal;
+        }
+      }
+
+      function calcTip(tipPercentage) {
+        for (i = 0; i < personLength; i++) {
+          tipTotal = person[i].subtotal * (tipPercentageInput.value / 100);
+          person[i].tip = Math.round(tipTotal * 100) / 100;
+          totals[i][1].value = person[i].tip;
+        }
+      }
+
+      function calcTax(taxPercentage = 9.5) {
+        for (i = 0; i < personLength; i++) {
+          taxTotal = person[i].subtotal * (taxPercentageInput.value / 100);
+          person[i].tax = Math.round(taxTotal * 100) / 100;
+          totals[i][2].value = person[i].tax;
+        }
+      }
+
+      function calcTotal() {
+        for (i = 0; i < personLength; i++) {
+          total = person[i].subtotal + person[i].tip + person[i].tax;
+          person[i].total = Math.round(total * 100) / 100;
+          totals[i][3].value = person[i].total;
+        }
+      }
+
+      function checkItemQty() {
+        for (i = 0; i < itemLength; i++) {
+          checkItem[0].item[i] = 0;
+          for (j = 0; j < personLength; j++) {
+            if (items[i].name.value !== "") {
+              checkItem[0].item[i] += parseFloat(persons[j].itemshare[i].value);
             }
-            
-            function calcSubtotal() {
-                for (i = 0; i < person.length; i++) {
-                    var subtotal = 0
-                    for (j = 0; j < person[i].personItems.length; j++) {
-                        subtotal += person[i].personItems[j];
-                    }
-                    person[i].personSubtotal = subtotal;
-                }
-            }
+          }
+        }
+        for (i = 0; i < itemLength; i++) {
+          if (items[i].name.value !== "") {
+            checkItems[i].value = items[i].qty.value - checkItem[0].item[i];
+          }
+        }
+      }
 
-            function displayTotals() {
-                person1Subtotal.innerHTML = person[0].personSubtotal;
-                person2Subtotal.innerHTML = person[1].personSubtotal;
-                person1Tip.innerHTML = person[0].personTip;
-                person2Tip.innerHTML = person[1].personTip;
-                person1Tax.innerHTML = person[0].personTax;
-                person2Tax.innerHTML = person[1].personTax;
-                person1Total.innerHTML = person[0].personTotal;
-                person2Total.innerHTML = person[1].personTotal;
-            }
+      function checkTotal() {
+        checkItem[1].total = [0, 0, 0, 0];
+        for (let i = 0; i < personLength; i++) {
+          checkItem[1].total[0] += parseFloat(person[i].subtotal);
+          checkItem[1].total[1] += parseFloat(person[i].tip);
+          checkItem[1].total[2] += parseFloat(person[i].tax);
+          checkItem[1].total[3] += parseFloat(person[i].total);
+        }
+        for (let i = 0; i < 4; i++) {
+          checkTotals[i].value = checkItem[1].total[i].toFixed(2);
+        }
+      }
 
-            function calcTip(tipPercentage) {
-                for (i = 0; i < person.length; i++) {
-                    tipTotal = person[i].personSubtotal * (tipPercentageInput.value / 100);
-                    person[i].personTip = tipTotal;
-                }
-            }
+      function updateTotal() {
+        // calcPersons();
+        // calcItems();
+        updatePersonField();
+        updateItemField();
+        calcSubtotal();
+        calcTip();
+        calcTax();
+        calcTotal();
+        checkItemQty();
+        checkTotal();
+      }
 
-            function calcTax(taxPercentage = 9.50) {
-                for (i = 0; i < person.length; i++) {
-                    taxTotal = person[i].personSubtotal * (taxPercentageInput.value / 100);
-                    person[i].personTax = taxTotal;
-                }
-            }
+      // command for 'add-button'
+      var updateTotalButton = document.getElementById("update-total-button");
+      updateTotalButton.addEventListener("click", updateTotal);
+      // var addPersonButton = document.getElementById("add-person-button");
+      // addPersonButton.addEventListener("click", addPerson);
+      // var addItemButton = document.getElementById("add-item-button");
+      // addItemButton.addEventListener("click", addItem);
 
-            function calcTotal() {
-                for (i = 0; i < person.length; i++) {
-                    total = (person[i].personSubtotal + person[i].personTip + person[i].personTax);
-                    person[i].personTotal = total;
-                }
-            }
+      // command for person fields
+      var persons = [
+        {
+          name: document.getElementById("person1-input"),
+          itemshare: [
+            document.getElementById("person1item1-input"),
+            document.getElementById("person1item2-input"),
+            document.getElementById("person1item3-input"),
+            document.getElementById("person1item4-input"),
+          ],
+        },
+        {
+          name: document.getElementById("person2-input"),
+          itemshare: [
+            document.getElementById("person2item1-input"),
+            document.getElementById("person2item2-input"),
+            document.getElementById("person2item3-input"),
+            document.getElementById("person2item4-input"),
+          ],
+        },
+      ];
 
-            function updateTotal() {
-                updatePersonFields();
-                updateItemFields();
-                calcSubtotal();
-                calcTip();
-                calcTax();
-                calcTotal()
-                displayTotals();
-            }
+      // command for item fields
+      var items = [
+        {
+          name: document.getElementById("item1-input"),
+          qty: document.getElementById("item1qty-input"),
+          cost: document.getElementById("item1cost-input"),
+        },
+        {
+          name: document.getElementById("item2-input"),
+          qty: document.getElementById("item2qty-input"),
+          cost: document.getElementById("item2cost-input"),
+        },
+        {
+          name: document.getElementById("item3-input"),
+          qty: document.getElementById("item3qty-input"),
+          cost: document.getElementById("item3cost-input"),
+        },
+        {
+          name: document.getElementById("item4-input"),
+          qty: document.getElementById("item4qty-input"),
+          cost: document.getElementById("item4cost-input"),
+        },
+      ];
 
-            // command for 'add-button'
-            var updateTotalButton = document.getElementById("update-total-button");
-            updateTotalButton.addEventListener("click", updateTotal,);
-            
-            // command for person fields
-            var person1Input = document.getElementById("person1-input");
-            var person2Input = document.getElementById("person2-input");
+      //command for item share fields
+      var checkItems = [
+        document.getElementById("checkitem1-input"),
+        document.getElementById("checkitem2-input"),
+        document.getElementById("checkitem3-input"),
+        document.getElementById("checkitem4-input"),
+      ];
 
-            //command for item share fields
-            var person1Item1Input = document.getElementById("person1item1-input")
-            var person1Item2Input = document.getElementById("person1item2-input")
-            var person1Item3Input = document.getElementById("person1item3-input")
-            var person1Item4Input = document.getElementById("person1item4-input")
+      var checkTotals = [
+        document.getElementById("checktotal1-input"),
+        document.getElementById("checktotal2-input"),
+        document.getElementById("checktotal3-input"),
+        document.getElementById("checktotal4-input"),
+      ];
 
-            var person2Item1Input = document.getElementById("person2item1-input")
-            var person2Item2Input = document.getElementById("person2item2-input")
-            var person2Item3Input = document.getElementById("person2item3-input")
-            var person2Item4Input = document.getElementById("person2item4-input")
+      // command for tip and tax inputs
+      var tipPercentageInput = document.getElementById("tip-percentage-input");
+      var taxPercentageInput = document.getElementById("tax-percentage-input");
 
-            // command for tip and tax inputs
-            var tipPercentageInput = document.getElementById("tip-percentage-input");
-            var taxPercentageInput = document.getElementById("tax-percentage-input");
+      // command for total values
+      var totals = [
+        [
+          document.getElementById("person1-subtotal"),
+          document.getElementById("person1-tip"),
+          document.getElementById("person1-tax"),
+          document.getElementById("person1-total"),
+        ],
+        [
+          document.getElementById("person2-subtotal"),
+          document.getElementById("person2-tip"),
+          document.getElementById("person2-tax"),
+          document.getElementById("person2-total"),
+        ],
+      ];
 
-            // command for total values
-            var person1Subtotal = document.getElementById("person1-subtotal");
-            var person2Subtotal = document.getElementById("person2-subtotal");
-            var person1Tip = document.getElementById("person1-tip");
-            var person2Tip = document.getElementById("person2-tip");
-            var person1Tax = document.getElementById("person1-tax");
-            var person2Tax = document.getElementById("person2-tax");
-            var person1Total = document.getElementById("person1-total");
-            var person2Total = document.getElementById("person2-total");
-
-        </script>
-    </body>
+      // test values
+      // persons[0].name.value = "sean";
+      // persons[1].name.value = "jo";
+      // items[0].name.value = "Hamburger";
+      // items[1].name.value = "Soda";
+      // items[2].name.value = "Fries";
+      // items[3].name.value = "Cake";
+      // items[0].qty.value = "2";
+      // items[1].qty.value = "2";
+      // items[2].qty.value = "1";
+      // items[3].qty.value = "1";
+      // items[0].cost.value = "24";
+      // items[1].cost.value = "7.50";
+      // items[2].cost.value = "6.00";
+      // items[3].cost.value = "5.00";
+      // persons[0].itemshare[0].value = "1";
+      // persons[0].itemshare[1].value = "1";
+      // persons[0].itemshare[2].value = "1";
+      // persons[0].itemshare[3].value = "0";
+      // persons[1].itemshare[0].value = "1";
+      // persons[1].itemshare[1].value = "1";
+      // persons[1].itemshare[2].value = "0";
+      // persons[1].itemshare[3].value = "1";
+      // tipPercentageInput.value = "15";
+      // taxPercentageInput.value = "9.5";
+    </script>
+  </body>
 </html>
-
